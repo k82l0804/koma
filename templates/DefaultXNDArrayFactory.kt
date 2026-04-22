@@ -16,10 +16,10 @@ class Default${dtype}NDArrayFactory: NumericalNDArrayFactory<${dtype}> {
     override fun ones(vararg lengths: Int) = Default${dtype}NDArray(*lengths) { 1${literalSuffix} }
 
     override fun rand(vararg lengths: Int) = Default${dtype}NDArray(*lengths) {
-        koma.internal.getRng().nextDouble().to${dtype}()
+        ${randConvert}
     }
 
     override fun randn(vararg lengths: Int) = Default${dtype}NDArray(*lengths) {
-        koma.internal.getRng().nextGaussian().to${dtype}()
+        ${randnConvert}
     }
 }

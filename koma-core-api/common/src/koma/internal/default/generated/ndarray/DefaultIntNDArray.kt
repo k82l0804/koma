@@ -58,7 +58,7 @@ open class DefaultIntNDArray(@KomaJsName("shape_private") vararg protected val s
 
     override fun getByte(i: Int): Byte {
         val ele = storage[checkLinearIndex(i)]
-        return ele.toByte()
+        return ele.toInt().toByte()
     }
     override fun setByte(i: Int, v: Byte) {
         storage[checkLinearIndex(i)] = v.toInt()
@@ -90,7 +90,7 @@ open class DefaultIntNDArray(@KomaJsName("shape_private") vararg protected val s
 
     override fun getShort(i: Int): Short {
         val ele = storage[checkLinearIndex(i)]
-        return ele.toShort()
+        return ele.toInt().toShort()
     }
     override fun setShort(i: Int, v: Short) {
         storage[checkLinearIndex(i)] = v.toInt()

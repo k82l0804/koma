@@ -185,21 +185,21 @@ operator fun  NDArray<Byte>.set(vararg indices: Int, value: Byte) = setByte(indi
 
 
 @koma.internal.JvmName("divByte")
-operator fun NDArray<Byte>.div(other: Byte) = map { (it/other).toByte() }
+operator fun NDArray<Byte>.div(other: Byte) = map { (it/other).toInt().toByte() }
 @koma.internal.JvmName("timesArrByte")
-operator fun NDArray<Byte>.times(other: NDArray<Byte>) = mapIndexedN { idx, ele -> (ele*other.get(*idx)).toByte() }
+operator fun NDArray<Byte>.times(other: NDArray<Byte>) = mapIndexedN { idx, ele -> (ele*other.get(*idx)).toInt().toByte() }
 @koma.internal.JvmName("timesByte")
-operator fun NDArray<Byte>.times(other: Byte) = map { (it * other).toByte() }
+operator fun NDArray<Byte>.times(other: Byte) = map { (it * other).toInt().toByte() }
 @koma.internal.JvmName("unaryMinusByte")
-operator fun NDArray<Byte>.unaryMinus() = map { (-it).toByte() }
+operator fun NDArray<Byte>.unaryMinus() = map { (-it).toInt().toByte() }
 @koma.internal.JvmName("minusByte")
-operator fun NDArray<Byte>.minus(other: Byte) = map { (it - other).toByte() }
+operator fun NDArray<Byte>.minus(other: Byte) = map { (it - other).toInt().toByte() }
 @koma.internal.JvmName("minusArrByte")
-operator fun NDArray<Byte>.minus(other: NDArray<Byte>) = mapIndexedN { idx, ele -> (ele - other.get(*idx)).toByte() }
+operator fun NDArray<Byte>.minus(other: NDArray<Byte>) = mapIndexedN { idx, ele -> (ele - other.get(*idx)).toInt().toByte() }
 @koma.internal.JvmName("plusByte")
-operator fun NDArray<Byte>.plus(other: Byte) = map { (it + other).toByte() }
+operator fun NDArray<Byte>.plus(other: Byte) = map { (it + other).toInt().toByte() }
 @koma.internal.JvmName("plusArrByte")
-operator fun NDArray<Byte>.plus(other: NDArray<Byte>) = mapIndexedN { idx, ele -> (ele + other.get(*idx)).toByte() }
+operator fun NDArray<Byte>.plus(other: NDArray<Byte>) = mapIndexedN { idx, ele -> (ele + other.get(*idx)).toInt().toByte() }
 @koma.internal.JvmName("powByte")
-infix fun NDArray<Byte>.pow(exponent: Int) = map { pow(it.toDouble(), exponent).toByte() }
+infix fun NDArray<Byte>.pow(exponent: Int) = map { pow(it.toDouble(), exponent).toInt().toByte() }
 

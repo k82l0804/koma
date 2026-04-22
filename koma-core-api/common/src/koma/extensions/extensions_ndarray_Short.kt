@@ -185,21 +185,21 @@ operator fun  NDArray<Short>.set(vararg indices: Int, value: Short) = setShort(i
 
 
 @koma.internal.JvmName("divShort")
-operator fun NDArray<Short>.div(other: Short) = map { (it/other).toShort() }
+operator fun NDArray<Short>.div(other: Short) = map { (it/other).toInt().toShort() }
 @koma.internal.JvmName("timesArrShort")
-operator fun NDArray<Short>.times(other: NDArray<Short>) = mapIndexedN { idx, ele -> (ele*other.get(*idx)).toShort() }
+operator fun NDArray<Short>.times(other: NDArray<Short>) = mapIndexedN { idx, ele -> (ele*other.get(*idx)).toInt().toShort() }
 @koma.internal.JvmName("timesShort")
-operator fun NDArray<Short>.times(other: Short) = map { (it * other).toShort() }
+operator fun NDArray<Short>.times(other: Short) = map { (it * other).toInt().toShort() }
 @koma.internal.JvmName("unaryMinusShort")
-operator fun NDArray<Short>.unaryMinus() = map { (-it).toShort() }
+operator fun NDArray<Short>.unaryMinus() = map { (-it).toInt().toShort() }
 @koma.internal.JvmName("minusShort")
-operator fun NDArray<Short>.minus(other: Short) = map { (it - other).toShort() }
+operator fun NDArray<Short>.minus(other: Short) = map { (it - other).toInt().toShort() }
 @koma.internal.JvmName("minusArrShort")
-operator fun NDArray<Short>.minus(other: NDArray<Short>) = mapIndexedN { idx, ele -> (ele - other.get(*idx)).toShort() }
+operator fun NDArray<Short>.minus(other: NDArray<Short>) = mapIndexedN { idx, ele -> (ele - other.get(*idx)).toInt().toShort() }
 @koma.internal.JvmName("plusShort")
-operator fun NDArray<Short>.plus(other: Short) = map { (it + other).toShort() }
+operator fun NDArray<Short>.plus(other: Short) = map { (it + other).toInt().toShort() }
 @koma.internal.JvmName("plusArrShort")
-operator fun NDArray<Short>.plus(other: NDArray<Short>) = mapIndexedN { idx, ele -> (ele + other.get(*idx)).toShort() }
+operator fun NDArray<Short>.plus(other: NDArray<Short>) = mapIndexedN { idx, ele -> (ele + other.get(*idx)).toInt().toShort() }
 @koma.internal.JvmName("powShort")
-infix fun NDArray<Short>.pow(exponent: Int) = map { pow(it.toDouble(), exponent).toShort() }
+infix fun NDArray<Short>.pow(exponent: Int) = map { pow(it.toDouble(), exponent).toInt().toShort() }
 

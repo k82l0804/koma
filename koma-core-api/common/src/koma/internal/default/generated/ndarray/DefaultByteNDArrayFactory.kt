@@ -16,10 +16,10 @@ class DefaultByteNDArrayFactory: NumericalNDArrayFactory<Byte> {
     override fun ones(vararg lengths: Int) = DefaultByteNDArray(*lengths) { 1.toByte() }
 
     override fun rand(vararg lengths: Int) = DefaultByteNDArray(*lengths) {
-        koma.internal.getRng().nextDouble().toByte()
+        koma.internal.getRng().nextDouble().toInt().toByte()
     }
 
     override fun randn(vararg lengths: Int) = DefaultByteNDArray(*lengths) {
-        koma.internal.getRng().nextGaussian().toByte()
+        koma.internal.getRng().nextGaussian().toInt().toByte()
     }
 }
