@@ -28,6 +28,10 @@ buildscript {
 // Modern KMP puts them all in a single multiplatform project.
 project(':koma-core-api') {
     apply plugin: 'org.jetbrains.kotlin.multiplatform'
+    apply plugin: 'maven-publish'
+
+    group = 'com.kyonifer'
+    version = project_version
 
     repositories {
         mavenCentral()
@@ -67,6 +71,10 @@ project(':koma-core-api') {
 
 project(":koma-core-ejml") {
     apply plugin: 'org.jetbrains.kotlin.jvm'
+    apply plugin: 'maven-publish'
+
+    group = 'com.kyonifer'
+    version = project_version
 
     sourceSets.main.kotlin.srcDirs = ['src', 'srcgen']
 
@@ -79,6 +87,13 @@ project(":koma-core-ejml") {
         implementation "org.ejml:ejml-all:0.33"
         implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     }
+    publishing {
+        publications {
+            maven(MavenPublication) {
+                from components.java
+            }
+        }
+    }
     assemble.doLast {
         copy {
             from 'build/libs'
@@ -88,6 +103,10 @@ project(":koma-core-ejml") {
 }
 project(":koma-core-jblas") {
     apply plugin: 'org.jetbrains.kotlin.jvm'
+    apply plugin: 'maven-publish'
+
+    group = 'com.kyonifer'
+    version = project_version
 
     sourceSets.main.kotlin.srcDirs = ['src', 'srcgen']
 
@@ -100,6 +119,13 @@ project(":koma-core-jblas") {
         implementation "org.jblas:jblas:1.2.5"
         implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     }
+    publishing {
+        publications {
+            maven(MavenPublication) {
+                from components.java
+            }
+        }
+    }
     assemble.doLast {
         copy {
             from 'build/libs'
@@ -110,6 +136,10 @@ project(":koma-core-jblas") {
 
 project(":koma-core-mtj") {
     apply plugin: 'org.jetbrains.kotlin.jvm'
+    apply plugin: 'maven-publish'
+
+    group = 'com.kyonifer'
+    version = project_version
 
     sourceSets.main.kotlin.srcDirs = ['src', 'srcgen']
 
@@ -124,6 +154,13 @@ project(":koma-core-mtj") {
             exclude module: "com.github.fommil.netlib:all:pom:1.1.2"
         }
         implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    }
+    publishing {
+        publications {
+            maven(MavenPublication) {
+                from components.java
+            }
+        }
     }
     assemble.doLast {
         copy {
@@ -223,6 +260,13 @@ task buildJvm {
     dependsOn(":koma-core-ejml:build")
     dependsOn(":koma-core-jblas:build")
     dependsOn(":koma-core-api:jvmJar")
+}
+task publishJvmToMavenLocal {
+    dependsOn(":koma-core-api:publishJvmPublicationToMavenLocal")
+    dependsOn(":koma-core-api:publishKotlinMultiplatformPublicationToMavenLocal")
+    dependsOn(":koma-core-ejml:publishToMavenLocal")
+    dependsOn(":koma-core-mtj:publishToMavenLocal")
+    dependsOn(":koma-core-jblas:publishToMavenLocal")
 }
 
 void genNDArray(String dest, List<String> dtypesNDArray) {
