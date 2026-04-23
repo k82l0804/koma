@@ -222,7 +222,7 @@ task buildJvm {
     dependsOn(":koma-core-mtj:build")
     dependsOn(":koma-core-ejml:build")
     dependsOn(":koma-core-jblas:build")
-    dependsOn(":koma-core-api:build")
+    dependsOn(":koma-core-api:jvmJar")
 }
 
 void genNDArray(String dest, List<String> dtypesNDArray) {
